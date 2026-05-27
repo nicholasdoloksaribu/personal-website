@@ -44,7 +44,7 @@ export default function Hero() {
 
             <p className="fade-up fade-up-1 font-mono text-xs tracking-[0.15em] uppercase text-accent mb-6 flex items-center gap-2">
                 <span className="inline-block w-5 h-px bg-accent" />
-                Available for work · East Jakarta
+                Available for work · Jakarta
             </p>
 
             <h1 className="fade-up fade-up-2 text-[clamp(2.2rem,6vw,5rem)] font-normal leading-[1.1] tracking-tight mb-6 text-text-bright">

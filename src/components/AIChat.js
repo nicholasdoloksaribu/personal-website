@@ -61,182 +61,65 @@ export default function AIChat() {
 
     return (
         <>
+            {/* Toggle Button */}
             <button
                 onClick={() => setOpen(!open)}
-                style={{
-                    position: "fixed",
-                    bottom: "2rem",
-                    right: "2rem",
-                    width: "52px",
-                    height: "52px",
-                    borderRadius: "50%",
-                    background: "#4ade80",
-                    color: "#0a0a0a",
-                    border: "none",
-                    cursor: "pointer",
-                    fontSize: "20px",
-                    boxShadow: "0 4px 24px rgba(74,222,128,0.3)",
-                    zIndex: 100,
-                    transition: "transform 0.2s, box-shadow 0.2s",
-                }}
-                onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = "scale(1.08)";
-                    e.currentTarget.style.boxShadow =
-                        "0 4px 32px rgba(74,222,128,0.5)";
-                }}
-                onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = "scale(1)";
-                    e.currentTarget.style.boxShadow =
-                        "0 4px 24px rgba(74,222,128,0.3)";
-                }}
+                className="fixed bottom-6 right-5 md:bottom-8 md:right-8 w-[52px] h-[52px] rounded-full bg-accent text-dark border-none cursor-pointer text-xl shadow-[0_4px_24px_rgba(74,222,128,0.3)] z-[100] transition-all duration-200 hover:scale-[1.08] hover:shadow-[0_4px_32px_rgba(74,222,128,0.5)]"
             >
                 {open ? "✕" : "✦"}
             </button>
 
+            {/* Chat Window */}
             {open && (
-                <div
-                    style={{
-                        position: "fixed",
-                        bottom: "5.5rem",
-                        right: "2rem",
-                        width: "360px",
-                        maxHeight: "520px",
-                        background: "#0f0f0f",
-                        border: "1px solid #222",
-                        display: "flex",
-                        flexDirection: "column",
-                        boxShadow: "0 8px 40px rgba(0,0,0,0.6)",
-                        zIndex: 100,
-                        overflow: "hidden",
-                    }}
-                >
-                    <div
-                        style={{
-                            padding: "1rem 1.25rem",
-                            borderBottom: "1px solid #1a1a1a",
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "10px",
-                            background: "#111",
-                        }}
-                    >
-                        <div
-                            style={{
-                                width: "8px",
-                                height: "8px",
-                                borderRadius: "50%",
-                                background: "#4ade80",
-                                boxShadow: "0 0 8px rgba(74,222,128,0.6)",
-                            }}
-                        />
+                <div className="fixed bottom-20 md:bottom-[5.5rem] right-5 md:right-8 w-[calc(100vw-2.5rem)] md:w-[360px] max-h-[70vh] md:max-h-[520px] bg-dark-card border border-line flex flex-col shadow-[0_8px_40px_rgba(0,0,0,0.6)] z-[100] overflow-hidden">
+                    {/* Header */}
+                    <div className="px-4 md:px-5 py-4 border-b border-dark-border flex items-center gap-2.5 bg-dark-input">
+                        <div className="w-2 h-2 rounded-full bg-accent shadow-[0_0_8px_rgba(74,222,128,0.6)]" />
                         <div>
-                            <p style={{ fontSize: "13px", color: "#f0f0f0" }}>
+                            <p className="text-[13px] text-text-bright">
                                 Ask about Nicholas
                             </p>
-                            <p
-                                style={{
-                                    fontFamily: "Courier New, monospace",
-                                    fontSize: "10px",
-                                    color: "#4ade80",
-                                }}
-                            >
+                            <p className="font-mono text-[10px] text-accent">
                                 AI Assistant · Online
                             </p>
                         </div>
                     </div>
 
-                    <div
-                        className="chat-scroll"
-                        style={{
-                            flex: 1,
-                            overflowY: "auto",
-                            padding: "1.25rem",
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: "12px",
-                        }}
-                    >
+                    {/* Messages */}
+                    <div className="chat-scroll flex-1 overflow-y-auto p-4 md:p-5 flex flex-col gap-3">
                         {messages.map((m, i) => (
                             <div
                                 key={i}
-                                style={{
-                                    display: "flex",
-                                    justifyContent:
-                                        m.role === "user"
-                                            ? "flex-end"
-                                            : "flex-start",
-                                }}
+                                className={`flex ${
+                                    m.role === "user"
+                                        ? "justify-end"
+                                        : "justify-start"
+                                }`}
                             >
                                 <div
-                                    style={{
-                                        maxWidth: "85%",
-                                        padding: "10px 14px",
-                                        background:
-                                            m.role === "user"
-                                                ? "#4ade80"
-                                                : "#1a1a1a",
-                                        color:
-                                            m.role === "user"
-                                                ? "#0a0a0a"
-                                                : "#ccc",
-                                        fontSize: "13px",
-                                        lineHeight: 1.6,
-                                    }}
+                                    className={`max-w-[85%] px-3.5 py-2.5 text-[13px] leading-relaxed ${
+                                        m.role === "user"
+                                            ? "bg-accent text-dark"
+                                            : "bg-dark-border text-[#ccc]"
+                                    }`}
                                 >
                                     {m.content}
                                 </div>
                             </div>
                         ))}
                         {loading && (
-                            <div
-                                style={{
-                                    padding: "10px 14px",
-                                    background: "#1a1a1a",
-                                    fontSize: "13px",
-                                    color: "#4ade80",
-                                    fontFamily: "Courier New, monospace",
-                                    alignSelf: "flex-start",
-                                }}
-                            >
-                                <span className="cursor-blink">▋</span>{" "}
+                            <div className="px-3.5 py-2.5 bg-dark-border text-[13px] text-accent font-mono self-start">
+                                <span className="animate-blink">▋</span>{" "}
                                 thinking...
                             </div>
                         )}
                         {messages.length === 1 && (
-                            <div
-                                style={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    gap: "6px",
-                                }}
-                            >
+                            <div className="flex flex-col gap-1.5">
                                 {SUGGESTIONS.map((s) => (
                                     <button
                                         key={s}
                                         onClick={() => send(s)}
-                                        style={{
-                                            textAlign: "left",
-                                            padding: "8px 12px",
-                                            border: "1px solid #222",
-                                            background: "transparent",
-                                            fontSize: "12px",
-                                            color: "#666",
-                                            cursor: "pointer",
-                                            fontFamily: "inherit",
-                                            transition: "all 0.2s",
-                                        }}
-                                        onMouseEnter={(e) => {
-                                            e.currentTarget.style.borderColor =
-                                                "#4ade80";
-                                            e.currentTarget.style.color =
-                                                "#4ade80";
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            e.currentTarget.style.borderColor =
-                                                "#222";
-                                            e.currentTarget.style.color =
-                                                "#666";
-                                        }}
+                                        className="text-left px-3 py-2 border border-line bg-transparent text-xs text-text-dim cursor-pointer font-[inherit] transition-all duration-200 hover:border-accent hover:text-accent"
                                     >
                                         {s}
                                     </button>
@@ -246,53 +129,23 @@ export default function AIChat() {
                         <div ref={bottomRef} />
                     </div>
 
-                    <div
-                        style={{
-                            padding: "1rem 1.25rem",
-                            borderTop: "1px solid #1a1a1a",
-                            display: "flex",
-                            gap: "8px",
-                            background: "#111",
-                        }}
-                    >
+                    {/* Input */}
+                    <div className="px-4 md:px-5 py-4 border-t border-dark-border flex gap-2 bg-dark-input">
                         <input
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
                             onKeyDown={(e) => e.key === "Enter" && send()}
                             placeholder="Ask something..."
-                            style={{
-                                flex: 1,
-                                border: "1px solid #222",
-                                padding: "8px 12px",
-                                fontSize: "13px",
-                                outline: "none",
-                                fontFamily: "Georgia, serif",
-                                color: "#f0f0f0",
-                                background: "#0f0f0f",
-                                transition: "border-color 0.2s",
-                            }}
-                            onFocus={(e) =>
-                                (e.target.style.borderColor = "#4ade80")
-                            }
-                            onBlur={(e) =>
-                                (e.target.style.borderColor = "#222")
-                            }
+                            className="flex-1 border border-line px-3 py-2 text-[13px] outline-none font-serif text-text-bright bg-dark-card transition-colors duration-200 focus:border-accent"
                         />
                         <button
                             onClick={() => send()}
                             disabled={loading || !input.trim()}
-                            style={{
-                                width: "36px",
-                                height: "36px",
-                                background: input.trim()
-                                    ? "#4ade80"
-                                    : "#1a1a1a",
-                                color: input.trim() ? "#0a0a0a" : "#444",
-                                border: "none",
-                                cursor: input.trim() ? "pointer" : "default",
-                                fontSize: "14px",
-                                transition: "all 0.2s",
-                            }}
+                            className={`w-9 h-9 border-none text-sm transition-all duration-200 ${
+                                input.trim()
+                                    ? "bg-accent text-dark cursor-pointer"
+                                    : "bg-dark-border text-text-dimmer cursor-default"
+                            }`}
                         >
                             →
                         </button>

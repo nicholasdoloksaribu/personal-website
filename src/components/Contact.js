@@ -1,161 +1,67 @@
 "use client";
 
-const projects = [
+const contacts = [
     {
-        num: "01",
-        name: "Solvin Ticketing System",
-        desc: "Web-based ticketing system for managing support requests and issue tracking.",
-        tags: ["Laravel", "MySQL", "RESTful API"],
+        label: "Email",
+        value: "nicholasdoloksaribu450@gmail.com",
+        href: "mailto:nicholasdoloksaribu450@gmail.com",
     },
     {
-        num: "02",
-        name: "JDS Web",
-        desc: "Company website built during internship at Jelajah Data Semesta.",
-        tags: ["Laravel", "Next.js", "Redis", "Docker"],
+        label: "LinkedIn",
+        value: "Nicholas Doloksaribu",
+        href: "https://linkedin.com/in/nicholas-doloksaribu",
     },
     {
-        num: "03",
-        name: "Sentiment Analysis — E-Commerce",
-        desc: "NLP model to analyze Indonesian user reviews from e-commerce platforms.",
-        tags: ["Python", "Machine Learning"],
-    },
-    {
-        num: "04",
-        name: "Motorcycle Data Analytics Dashboard",
-        desc: "Interactive dashboard for visualizing and analyzing motorcycle sales data.",
-        tags: ["Python", "Data Analysis"],
-    },
-    {
-        num: "05",
-        name: "Online Loans Management App",
-        desc: "Full-stack application for managing loan applications and approvals.",
-        tags: ["Laravel", "MySQL"],
-    },
-    {
-        num: "06",
-        name: "Library Information System",
-        desc: "Digital library management with book cataloging and member management.",
-        tags: ["Laravel", "PostgreSQL"],
+        label: "GitHub",
+        value: "nicholasdoloksaribu",
+        href: "https://github.com/nicholasdoloksaribu",
     },
 ];
 
-export default function Projects() {
+export default function Contact() {
     return (
         <section
-            id="projects"
-            style={{
-                padding: "5rem 2.5rem",
-                borderBottom: "1px solid #1a1a1a",
-            }}
+            id="contact"
+            className="px-5 md:px-10 py-16 md:py-20 border-b border-dark-border"
         >
-            <p
-                style={{
-                    fontFamily: "Courier New, monospace",
-                    fontSize: "11px",
-                    letterSpacing: "0.15em",
-                    textTransform: "uppercase",
-                    color: "#4ade80",
-                    marginBottom: "3rem",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "8px",
-                }}
-            >
-                <span
-                    style={{
-                        display: "inline-block",
-                        width: "16px",
-                        height: "1px",
-                        background: "#4ade80",
-                    }}
-                />
-                Selected Projects
+            <p className="font-mono text-[11px] tracking-[0.15em] uppercase text-accent mb-10 md:mb-12 flex items-center gap-2">
+                <span className="inline-block w-4 h-px bg-accent" />
+                Contact
             </p>
-            {projects.map((p, i) => (
-                <div
-                    key={i}
-                    style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "flex-start",
-                        gap: "2rem",
-                        padding: "1.75rem",
-                        marginBottom: "1px",
-                        background: "#0f0f0f",
-                        transition: "background 0.2s, border-left 0.2s",
-                        borderLeft: "2px solid transparent",
-                        cursor: "default",
-                    }}
-                    onMouseEnter={(e) => {
-                        e.currentTarget.style.background = "#141414";
-                        e.currentTarget.style.borderLeft = "2px solid #4ade80";
-                    }}
-                    onMouseLeave={(e) => {
-                        e.currentTarget.style.background = "#0f0f0f";
-                        e.currentTarget.style.borderLeft =
-                            "2px solid transparent";
-                    }}
-                >
-                    <div style={{ flex: 1 }}>
-                        <p
-                            style={{
-                                fontFamily: "Courier New, monospace",
-                                fontSize: "11px",
-                                color: "#4ade80",
-                                marginBottom: "6px",
-                            }}
-                        >
-                            {p.num}
-                        </p>
-                        <p
-                            style={{
-                                fontSize: "17px",
-                                color: "#f0f0f0",
-                                marginBottom: "6px",
-                            }}
-                        >
-                            {p.name}
-                        </p>
-                        <p
-                            style={{
-                                fontSize: "14px",
-                                color: "#666",
-                                lineHeight: 1.6,
-                            }}
-                        >
-                            {p.desc}
-                        </p>
-                    </div>
-                    <div
-                        style={{
-                            display: "flex",
-                            gap: "6px",
-                            flexWrap: "wrap",
-                            justifyContent: "flex-end",
-                            paddingTop: "28px",
-                            maxWidth: "220px",
-                        }}
-                    >
-                        {p.tags.map((t) => (
-                            <span
-                                key={t}
-                                style={{
-                                    fontFamily: "Courier New, monospace",
-                                    fontSize: "10px",
-                                    letterSpacing: "0.06em",
-                                    textTransform: "uppercase",
-                                    color: "#4ade80",
-                                    border: "1px solid #1f3d2a",
-                                    padding: "3px 8px",
-                                    background: "#0d1f15",
-                                }}
-                            >
-                                {t}
-                            </span>
-                        ))}
-                    </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
+                <div>
+                    <h2 className="text-3xl md:text-4xl text-text-bright font-normal mb-6 leading-tight">
+                        Let&apos;s work
+                        <br />
+                        <em className="text-text-dimmer italic">together.</em>
+                    </h2>
+                    <p className="text-base text-text-muted leading-[1.75] max-w-md">
+                        I&apos;m currently open to new opportunities. Whether
+                        you have a project in mind or just want to connect, feel
+                        free to reach out.
+                    </p>
                 </div>
-            ))}
+
+                <div className="flex flex-col gap-4">
+                    {contacts.map((c) => (
+                        <a
+                            key={c.label}
+                            href={c.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group block p-5 bg-dark-card border border-dark-border no-underline transition-all duration-200 hover:bg-dark-hover hover:border-accent"
+                        >
+                            <p className="font-mono text-[10px] tracking-[0.12em] uppercase text-accent mb-2">
+                                {c.label}
+                            </p>
+                            <p className="text-[15px] text-text-muted transition-colors duration-200 group-hover:text-text-bright">
+                                {c.value}
+                            </p>
+                        </a>
+                    ))}
+                </div>
+            </div>
         </section>
     );
 }

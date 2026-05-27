@@ -43,112 +43,33 @@ export default function Projects() {
     return (
         <section
             id="projects"
-            style={{
-                padding: "5rem 2.5rem",
-                borderBottom: "1px solid #1a1a1a",
-            }}
+            className="px-5 md:px-10 py-16 md:py-20 border-b border-dark-border"
         >
-            <p
-                style={{
-                    fontFamily: "Courier New, monospace",
-                    fontSize: "11px",
-                    letterSpacing: "0.15em",
-                    textTransform: "uppercase",
-                    color: "#4ade80",
-                    marginBottom: "3rem",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "8px",
-                }}
-            >
-                <span
-                    style={{
-                        display: "inline-block",
-                        width: "16px",
-                        height: "1px",
-                        background: "#4ade80",
-                    }}
-                />
+            <p className="font-mono text-[11px] tracking-[0.15em] uppercase text-accent mb-10 md:mb-12 flex items-center gap-2">
+                <span className="inline-block w-4 h-px bg-accent" />
                 Selected Projects
             </p>
             {projects.map((p, i) => (
                 <div
                     key={i}
-                    style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "flex-start",
-                        gap: "2rem",
-                        padding: "1.75rem",
-                        marginBottom: "1px",
-                        background: "#0f0f0f",
-                        transition: "background 0.2s, border-left 0.2s",
-                        borderLeft: "2px solid transparent",
-                        cursor: "default",
-                    }}
-                    onMouseEnter={(e) => {
-                        e.currentTarget.style.background = "#141414";
-                        e.currentTarget.style.borderLeft = "2px solid #4ade80";
-                    }}
-                    onMouseLeave={(e) => {
-                        e.currentTarget.style.background = "#0f0f0f";
-                        e.currentTarget.style.borderLeft =
-                            "2px solid transparent";
-                    }}
+                    className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 md:gap-8 p-5 md:p-7 mb-px bg-dark-card transition-all duration-200 border-l-2 border-l-transparent hover:bg-dark-hover hover:border-l-accent cursor-default"
                 >
-                    <div style={{ flex: 1 }}>
-                        <p
-                            style={{
-                                fontFamily: "Courier New, monospace",
-                                fontSize: "11px",
-                                color: "#4ade80",
-                                marginBottom: "6px",
-                            }}
-                        >
+                    <div className="flex-1">
+                        <p className="font-mono text-[11px] text-accent mb-1.5">
                             {p.num}
                         </p>
-                        <p
-                            style={{
-                                fontSize: "17px",
-                                color: "#f0f0f0",
-                                marginBottom: "6px",
-                            }}
-                        >
+                        <p className="text-[17px] text-text-bright mb-1.5">
                             {p.name}
                         </p>
-                        <p
-                            style={{
-                                fontSize: "14px",
-                                color: "#666",
-                                lineHeight: 1.6,
-                            }}
-                        >
+                        <p className="text-sm text-text-dim leading-relaxed">
                             {p.desc}
                         </p>
                     </div>
-                    <div
-                        style={{
-                            display: "flex",
-                            gap: "6px",
-                            flexWrap: "wrap",
-                            justifyContent: "flex-end",
-                            paddingTop: "28px",
-                            maxWidth: "220px",
-                        }}
-                    >
+                    <div className="flex gap-1.5 flex-wrap md:justify-end md:pt-7 md:max-w-[220px]">
                         {p.tags.map((t) => (
                             <span
                                 key={t}
-                                style={{
-                                    fontFamily: "Courier New, monospace",
-                                    fontSize: "10px",
-                                    letterSpacing: "0.06em",
-                                    textTransform: "uppercase",
-                                    color: "#4ade80",
-                                    border: "1px solid #1f3d2a",
-                                    padding: "3px 8px",
-                                    background: "#0d1f15",
-                                }}
+                                className="font-mono text-[10px] tracking-[0.06em] uppercase text-accent border border-accent-border px-2 py-0.5 bg-accent-bg"
                             >
                                 {t}
                             </span>

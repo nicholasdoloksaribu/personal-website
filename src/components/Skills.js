@@ -20,97 +20,28 @@ export default function Skills() {
     return (
         <section
             id="skills"
-            style={{
-                padding: "5rem 2.5rem",
-                borderBottom: "1px solid #1a1a1a",
-            }}
+            className="px-5 md:px-10 py-16 md:py-20 border-b border-dark-border"
         >
-            <p
-                style={{
-                    fontFamily: "Courier New, monospace",
-                    fontSize: "11px",
-                    letterSpacing: "0.15em",
-                    textTransform: "uppercase",
-                    color: "#4ade80",
-                    marginBottom: "3rem",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "8px",
-                }}
-            >
-                <span
-                    style={{
-                        display: "inline-block",
-                        width: "16px",
-                        height: "1px",
-                        background: "#4ade80",
-                    }}
-                />
+            <p className="font-mono text-[11px] tracking-[0.15em] uppercase text-accent mb-10 md:mb-12 flex items-center gap-2">
+                <span className="inline-block w-4 h-px bg-accent" />
                 Skills & Stack
             </p>
-            <div
-                style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-                    gap: "1px",
-                    background: "#1a1a1a",
-                    border: "1px solid #1a1a1a",
-                }}
-            >
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-dark-border border border-dark-border">
                 {groups.map((g) => (
                     <div
                         key={g.category}
-                        style={{
-                            background: "#0f0f0f",
-                            padding: "1.75rem",
-                            transition: "background 0.2s",
-                        }}
-                        onMouseEnter={(e) =>
-                            (e.currentTarget.style.background = "#141414")
-                        }
-                        onMouseLeave={(e) =>
-                            (e.currentTarget.style.background = "#0f0f0f")
-                        }
+                        className="bg-dark-card p-7 transition-colors duration-200 hover:bg-dark-hover"
                     >
-                        <p
-                            style={{
-                                fontFamily: "Courier New, monospace",
-                                fontSize: "10px",
-                                letterSpacing: "0.12em",
-                                textTransform: "uppercase",
-                                color: "#4ade80",
-                                marginBottom: "1rem",
-                            }}
-                        >
+                        <p className="font-mono text-[10px] tracking-[0.12em] uppercase text-accent mb-4">
                             {g.category}
                         </p>
-                        <div
-                            style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                gap: "8px",
-                            }}
-                        >
+                        <div className="flex flex-col gap-2">
                             {g.skills.map((s) => (
                                 <span
                                     key={s}
-                                    style={{
-                                        fontSize: "15px",
-                                        color: "#ccc",
-                                        display: "flex",
-                                        alignItems: "center",
-                                        gap: "8px",
-                                    }}
+                                    className="text-[15px] text-[#ccc] flex items-center gap-2"
                                 >
-                                    <span
-                                        style={{
-                                            width: "4px",
-                                            height: "4px",
-                                            borderRadius: "50%",
-                                            background: "#4ade80",
-                                            flexShrink: 0,
-                                        }}
-                                    />
+                                    <span className="w-1 h-1 rounded-full bg-accent shrink-0" />
                                     {s}
                                 </span>
                             ))}

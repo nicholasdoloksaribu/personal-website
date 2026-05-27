@@ -38,199 +38,60 @@ export default function Hero() {
     }, [displayed, deleting, roleIdx]);
 
     return (
-        <section
-            className="grid-bg"
-            style={{
-                minHeight: "100vh",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                padding: "8rem 2.5rem 5rem",
-                borderBottom: "1px solid #1a1a1a",
-                position: "relative",
-                overflow: "hidden",
-            }}
-        >
+        <section className="grid-bg min-h-screen flex flex-col justify-center px-5 md:px-10 pt-32 md:pt-40 pb-16 md:pb-20 border-b border-dark-border relative overflow-hidden">
             {/* Glow orb */}
-            <div
-                style={{
-                    position: "absolute",
-                    top: "20%",
-                    left: "-10%",
-                    width: "500px",
-                    height: "500px",
-                    background:
-                        "radial-gradient(circle, rgba(74,222,128,0.04) 0%, transparent 70%)",
-                    pointerEvents: "none",
-                }}
-            />
+            <div className="absolute top-[20%] -left-[10%] w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-[radial-gradient(circle,rgba(74,222,128,0.04)_0%,transparent_70%)] pointer-events-none" />
 
-            <p
-                className="fade-up fade-up-1"
-                style={{
-                    fontFamily: "Courier New, monospace",
-                    fontSize: "12px",
-                    letterSpacing: "0.15em",
-                    textTransform: "uppercase",
-                    color: "#4ade80",
-                    marginBottom: "1.5rem",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "8px",
-                }}
-            >
-                <span
-                    style={{
-                        display: "inline-block",
-                        width: "20px",
-                        height: "1px",
-                        background: "#4ade80",
-                    }}
-                />
+            <p className="fade-up fade-up-1 font-mono text-xs tracking-[0.15em] uppercase text-accent mb-6 flex items-center gap-2">
+                <span className="inline-block w-5 h-px bg-accent" />
                 Available for work · East Jakarta
             </p>
 
-            <h1
-                className="fade-up fade-up-2"
-                style={{
-                    fontSize: "clamp(2.8rem, 6vw, 5rem)",
-                    fontWeight: "normal",
-                    lineHeight: 1.1,
-                    letterSpacing: "-0.02em",
-                    marginBottom: "1.5rem",
-                    color: "#f0f0f0",
-                }}
-            >
+            <h1 className="fade-up fade-up-2 text-[clamp(2.2rem,6vw,5rem)] font-normal leading-[1.1] tracking-tight mb-6 text-text-bright">
                 Nicholas Juniarto
                 <br />
-                <em style={{ color: "#444", fontStyle: "italic" }}>
-                    Doloksaribu.
-                </em>
+                <em className="text-text-dimmer italic">Doloksaribu.</em>
             </h1>
 
-            <div
-                className="fade-up fade-up-3"
-                style={{
-                    fontFamily: "Courier New, monospace",
-                    fontSize: "18px",
-                    color: "#4ade80",
-                    marginBottom: "2rem",
-                    minHeight: "28px",
-                }}
-            >
+            <div className="fade-up fade-up-3 font-mono text-base md:text-lg text-accent mb-8 min-h-[28px]">
                 <span>$ </span>
                 <span>{displayed}</span>
-                <span className="cursor-blink" style={{ color: "#4ade80" }}>
-                    ▋
-                </span>
+                <span className="animate-blink text-accent">▋</span>
             </div>
 
-            <p
-                className="fade-up fade-up-3"
-                style={{
-                    maxWidth: "520px",
-                    fontSize: "16px",
-                    color: "#888",
-                    lineHeight: 1.75,
-                    marginBottom: "3rem",
-                }}
-            >
+            <p className="fade-up fade-up-3 max-w-[520px] text-base text-text-muted leading-[1.75] mb-12">
                 Backend Developer focused on building scalable, production-ready
                 systems using Laravel, Redis, and Docker. I turn complex
                 problems into clean, maintainable solutions.
             </p>
 
-            <div
-                className="fade-up fade-up-4"
-                style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}
-            >
+            <div className="fade-up fade-up-4 flex gap-4 flex-col sm:flex-row flex-wrap">
                 <a
                     href="#projects"
-                    style={{
-                        fontFamily: "Courier New, monospace",
-                        fontSize: "13px",
-                        letterSpacing: "0.08em",
-                        textTransform: "uppercase",
-                        color: "#0a0a0a",
-                        background: "#4ade80",
-                        padding: "10px 24px",
-                        textDecoration: "none",
-                        transition: "opacity 0.2s",
-                    }}
-                    onMouseEnter={(e) =>
-                        (e.currentTarget.style.opacity = "0.8")
-                    }
-                    onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+                    className="font-mono text-[13px] tracking-[0.08em] uppercase text-dark bg-accent px-6 py-2.5 no-underline transition-opacity duration-200 hover:opacity-80 text-center"
                 >
                     View Projects →
                 </a>
                 <a
                     href="mailto:nicholasdoloksaribu450@gmail.com"
-                    style={{
-                        fontFamily: "Courier New, monospace",
-                        fontSize: "13px",
-                        letterSpacing: "0.08em",
-                        textTransform: "uppercase",
-                        color: "#4ade80",
-                        border: "1px solid #4ade80",
-                        padding: "10px 24px",
-                        textDecoration: "none",
-                        transition: "all 0.2s",
-                    }}
-                    onMouseEnter={(e) => {
-                        e.currentTarget.style.background = "#4ade80";
-                        e.currentTarget.style.color = "#0a0a0a";
-                    }}
-                    onMouseLeave={(e) => {
-                        e.currentTarget.style.background = "transparent";
-                        e.currentTarget.style.color = "#4ade80";
-                    }}
+                    className="font-mono text-[13px] tracking-[0.08em] uppercase text-accent border border-accent px-6 py-2.5 no-underline transition-all duration-200 hover:bg-accent hover:text-dark text-center"
                 >
                     Get in Touch
                 </a>
             </div>
 
-            <div
-                className="fade-up fade-up-5"
-                style={{
-                    marginTop: "5rem",
-                    display: "flex",
-                    gap: "3rem",
-                    flexWrap: "wrap",
-                }}
-            >
+            <div className="fade-up fade-up-5 mt-16 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12">
                 {[
                     ["3+", "Years Experience"],
                     ["9+", "Projects Built"],
                     ["3.72", "GPA / 4.00"],
                     ["12+", "Certificates"],
                 ].map(([num, label]) => (
-                    <div
-                        key={label}
-                        style={{
-                            borderLeft: "2px solid #4ade80",
-                            paddingLeft: "1rem",
-                        }}
-                    >
-                        <p
-                            style={{
-                                fontSize: "2rem",
-                                color: "#f0f0f0",
-                                lineHeight: 1,
-                                marginBottom: "4px",
-                            }}
-                        >
+                    <div key={label} className="border-l-2 border-accent pl-4">
+                        <p className="text-2xl md:text-3xl text-text-bright leading-none mb-1">
                             {num}
                         </p>
-                        <p
-                            style={{
-                                fontFamily: "Courier New, monospace",
-                                fontSize: "11px",
-                                letterSpacing: "0.1em",
-                                textTransform: "uppercase",
-                                color: "#666",
-                            }}
-                        >
+                        <p className="font-mono text-[11px] tracking-[0.1em] uppercase text-text-dim">
                             {label}
                         </p>
                     </div>

@@ -41,115 +41,44 @@ export default function Experience() {
     return (
         <section
             id="experience"
-            style={{
-                padding: "5rem 2.5rem",
-                borderBottom: "1px solid #1a1a1a",
-            }}
+            className="px-5 md:px-10 py-16 md:py-20 border-b border-dark-border"
         >
-            <p
-                style={{
-                    fontFamily: "Courier New, monospace",
-                    fontSize: "11px",
-                    letterSpacing: "0.15em",
-                    textTransform: "uppercase",
-                    color: "#4ade80",
-                    marginBottom: "3rem",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "8px",
-                }}
-            >
-                <span
-                    style={{
-                        display: "inline-block",
-                        width: "16px",
-                        height: "1px",
-                        background: "#4ade80",
-                    }}
-                />
+            <p className="font-mono text-[11px] tracking-[0.15em] uppercase text-accent mb-10 md:mb-12 flex items-center gap-2">
+                <span className="inline-block w-4 h-px bg-accent" />
                 Experience
             </p>
 
             {experiences.map((exp, i) => (
                 <div
                     key={i}
-                    style={{
-                        display: "grid",
-                        gridTemplateColumns: "220px 1fr",
-                        gap: "2rem",
-                        padding: "2.5rem 0",
-                        borderBottom:
-                            i < experiences.length - 1
-                                ? "1px solid #1a1a1a"
-                                : "none",
-                    }}
+                    className={`grid grid-cols-1 md:grid-cols-[220px_1fr] gap-4 md:gap-8 py-8 md:py-10 ${
+                        i < experiences.length - 1
+                            ? "border-b border-dark-border"
+                            : ""
+                    }`}
                 >
                     <div>
-                        <p
-                            style={{
-                                fontSize: "15px",
-                                color: "#f0f0f0",
-                                marginBottom: "4px",
-                            }}
-                        >
+                        <p className="text-[15px] text-text-bright mb-1">
                             {exp.company}
                         </p>
-                        <p
-                            style={{
-                                fontFamily: "Courier New, monospace",
-                                fontSize: "11px",
-                                color: "#666",
-                                marginBottom: "4px",
-                            }}
-                        >
+                        <p className="font-mono text-[11px] text-text-dim mb-1">
                             {exp.location}
                         </p>
-                        <p
-                            style={{
-                                fontFamily: "Courier New, monospace",
-                                fontSize: "11px",
-                                color: "#444",
-                            }}
-                        >
+                        <p className="font-mono text-[11px] text-text-dimmer">
                             {exp.period}
                         </p>
                     </div>
                     <div>
-                        <p
-                            style={{
-                                fontSize: "14px",
-                                color: "#4ade80",
-                                fontStyle: "italic",
-                                marginBottom: "1rem",
-                            }}
-                        >
+                        <p className="text-sm text-accent italic mb-4">
                             {exp.role}
                         </p>
-                        <ul
-                            style={{
-                                listStyle: "none",
-                                display: "flex",
-                                flexDirection: "column",
-                                gap: "6px",
-                            }}
-                        >
+                        <ul className="list-none flex flex-col gap-1.5">
                             {exp.points.map((pt, j) => (
                                 <li
                                     key={j}
-                                    style={{
-                                        fontSize: "14px",
-                                        color: "#888",
-                                        display: "flex",
-                                        gap: "10px",
-                                        lineHeight: 1.6,
-                                    }}
+                                    className="text-sm text-text-muted flex gap-2.5 leading-relaxed"
                                 >
-                                    <span
-                                        style={{
-                                            color: "#4ade80",
-                                            flexShrink: 0,
-                                        }}
-                                    >
+                                    <span className="text-accent shrink-0">
                                         ▸
                                     </span>
                                     {pt}
@@ -160,81 +89,26 @@ export default function Experience() {
                 </div>
             ))}
 
-            <div
-                style={{
-                    marginTop: "3rem",
-                    paddingTop: "2.5rem",
-                    borderTop: "1px solid #1a1a1a",
-                }}
-            >
-                <p
-                    style={{
-                        fontFamily: "Courier New, monospace",
-                        fontSize: "11px",
-                        letterSpacing: "0.15em",
-                        textTransform: "uppercase",
-                        color: "#4ade80",
-                        marginBottom: "2rem",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "8px",
-                    }}
-                >
-                    <span
-                        style={{
-                            display: "inline-block",
-                            width: "16px",
-                            height: "1px",
-                            background: "#4ade80",
-                        }}
-                    />
+            {/* Education */}
+            <div className="mt-10 md:mt-12 pt-8 md:pt-10 border-t border-dark-border">
+                <p className="font-mono text-[11px] tracking-[0.15em] uppercase text-accent mb-8 flex items-center gap-2">
+                    <span className="inline-block w-4 h-px bg-accent" />
                     Education
                 </p>
-                <div
-                    style={{
-                        display: "grid",
-                        gridTemplateColumns: "220px 1fr",
-                        gap: "2rem",
-                    }}
-                >
+                <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-4 md:gap-8">
                     <div>
-                        <p
-                            style={{
-                                fontSize: "15px",
-                                color: "#f0f0f0",
-                                marginBottom: "4px",
-                            }}
-                        >
+                        <p className="text-[15px] text-text-bright mb-1">
                             Indonesian Adventist University
                         </p>
-                        <p
-                            style={{
-                                fontFamily: "Courier New, monospace",
-                                fontSize: "11px",
-                                color: "#666",
-                            }}
-                        >
+                        <p className="font-mono text-[11px] text-text-dim">
                             Bandung · 2021 – 2025
                         </p>
                     </div>
                     <div>
-                        <p
-                            style={{
-                                fontSize: "14px",
-                                color: "#4ade80",
-                                fontStyle: "italic",
-                                marginBottom: "4px",
-                            }}
-                        >
+                        <p className="text-sm text-accent italic mb-1">
                             Bachelor of Information System
                         </p>
-                        <p
-                            style={{
-                                fontFamily: "Courier New, monospace",
-                                fontSize: "13px",
-                                color: "#f0f0f0",
-                            }}
-                        >
+                        <p className="font-mono text-[13px] text-text-bright">
                             GPA 3.72 / 4.00
                         </p>
                     </div>

@@ -15,30 +15,11 @@ export default function Home() {
             <Skills />
             <Projects />
             <Contact />
-            <footer
-                style={{
-                    padding: "1.5rem 2.5rem",
-                    borderTop: "1px solid #1a1a1a",
-                    display: "flex",
-                    justifyContent: "space-between",
-                }}
-            >
-                <span
-                    style={{
-                        fontFamily: "Courier New, monospace",
-                        fontSize: "11px",
-                        color: "#444",
-                    }}
-                >
+            <footer className="px-5 md:px-10 py-6 border-t border-dark-border flex flex-col sm:flex-row justify-between gap-2">
+                <span className="font-mono text-[11px] text-text-dimmer">
                     © 2026 Nicholas Juniarto Doloksaribu
                 </span>
-                <span
-                    style={{
-                        fontFamily: "Courier New, monospace",
-                        fontSize: "11px",
-                        color: "#444",
-                    }}
-                >
+                <span className="font-mono text-[11px] text-text-dimmer">
                     Built with Next.js
                 </span>
             </footer>

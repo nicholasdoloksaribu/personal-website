@@ -8,7 +8,7 @@ import AIChat from "../components/AIChat";
 
 export default function Home() {
     return (
-        <main style={{ maxWidth: "1100px", margin: "0 auto" }}>
+        <main>
             <Navbar />
             <Hero />
             <Experience />
@@ -18,7 +18,7 @@ export default function Home() {
             <footer
                 style={{
                     padding: "1.5rem 2.5rem",
-                    borderTop: "1px solid #e8e8e8",
+                    borderTop: "1px solid #1a1a1a",
                     display: "flex",
                     justifyContent: "space-between",
                 }}
@@ -27,7 +27,7 @@ export default function Home() {
                     style={{
                         fontFamily: "Courier New, monospace",
                         fontSize: "11px",
-                        color: "#bbb",
+                        color: "#444",
                     }}
                 >
                     © 2026 Nicholas Juniarto Doloksaribu
@@ -36,7 +36,7 @@ export default function Home() {
                     style={{
                         fontFamily: "Courier New, monospace",
                         fontSize: "11px",
-                        color: "#bbb",
+                        color: "#444",
                     }}
                 >
                     Built with Next.js

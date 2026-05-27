@@ -1,3 +1,5 @@
+"use client";
+
 const experiences = [
     {
         company: "Jelajah Data Semesta",
@@ -35,42 +37,39 @@ const experiences = [
     },
 ];
 
-const label = (text) => (
-    <p
-        style={{
-            fontFamily: "Courier New, monospace",
-            fontSize: "11px",
-            letterSpacing: "0.15em",
-            textTransform: "uppercase",
-            color: "#888",
-            marginBottom: "2.5rem",
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-        }}
-    >
-        <span
-            style={{
-                display: "inline-block",
-                width: "16px",
-                height: "1px",
-                background: "#888",
-            }}
-        />
-        {text}
-    </p>
-);
-
 export default function Experience() {
     return (
         <section
             id="experience"
             style={{
                 padding: "5rem 2.5rem",
-                borderBottom: "1px solid #e8e8e8",
+                borderBottom: "1px solid #1a1a1a",
             }}
         >
-            {label("Experience")}
+            <p
+                style={{
+                    fontFamily: "Courier New, monospace",
+                    fontSize: "11px",
+                    letterSpacing: "0.15em",
+                    textTransform: "uppercase",
+                    color: "#4ade80",
+                    marginBottom: "3rem",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px",
+                }}
+            >
+                <span
+                    style={{
+                        display: "inline-block",
+                        width: "16px",
+                        height: "1px",
+                        background: "#4ade80",
+                    }}
+                />
+                Experience
+            </p>
+
             {experiences.map((exp, i) => (
                 <div
                     key={i}
@@ -81,19 +80,25 @@ export default function Experience() {
                         padding: "2.5rem 0",
                         borderBottom:
                             i < experiences.length - 1
-                                ? "1px solid #e8e8e8"
+                                ? "1px solid #1a1a1a"
                                 : "none",
                     }}
                 >
                     <div>
-                        <p style={{ fontSize: "15px", marginBottom: "4px" }}>
+                        <p
+                            style={{
+                                fontSize: "15px",
+                                color: "#f0f0f0",
+                                marginBottom: "4px",
+                            }}
+                        >
                             {exp.company}
                         </p>
                         <p
                             style={{
                                 fontFamily: "Courier New, monospace",
                                 fontSize: "11px",
-                                color: "#888",
+                                color: "#666",
                                 marginBottom: "4px",
                             }}
                         >
@@ -103,7 +108,7 @@ export default function Experience() {
                             style={{
                                 fontFamily: "Courier New, monospace",
                                 fontSize: "11px",
-                                color: "#bbb",
+                                color: "#444",
                             }}
                         >
                             {exp.period}
@@ -113,7 +118,7 @@ export default function Experience() {
                         <p
                             style={{
                                 fontSize: "14px",
-                                color: "#3a3a3a",
+                                color: "#4ade80",
                                 fontStyle: "italic",
                                 marginBottom: "1rem",
                             }}
@@ -133,12 +138,20 @@ export default function Experience() {
                                     key={j}
                                     style={{
                                         fontSize: "14px",
-                                        color: "#3a3a3a",
+                                        color: "#888",
                                         display: "flex",
                                         gap: "10px",
+                                        lineHeight: 1.6,
                                     }}
                                 >
-                                    <span style={{ color: "#bbb" }}>—</span>
+                                    <span
+                                        style={{
+                                            color: "#4ade80",
+                                            flexShrink: 0,
+                                        }}
+                                    >
+                                        ▸
+                                    </span>
                                     {pt}
                                 </li>
                             ))}
@@ -146,14 +159,37 @@ export default function Experience() {
                     </div>
                 </div>
             ))}
+
             <div
                 style={{
                     marginTop: "3rem",
                     paddingTop: "2.5rem",
-                    borderTop: "1px solid #e8e8e8",
+                    borderTop: "1px solid #1a1a1a",
                 }}
             >
-                {label("Education")}
+                <p
+                    style={{
+                        fontFamily: "Courier New, monospace",
+                        fontSize: "11px",
+                        letterSpacing: "0.15em",
+                        textTransform: "uppercase",
+                        color: "#4ade80",
+                        marginBottom: "2rem",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "8px",
+                    }}
+                >
+                    <span
+                        style={{
+                            display: "inline-block",
+                            width: "16px",
+                            height: "1px",
+                            background: "#4ade80",
+                        }}
+                    />
+                    Education
+                </p>
                 <div
                     style={{
                         display: "grid",
@@ -162,14 +198,20 @@ export default function Experience() {
                     }}
                 >
                     <div>
-                        <p style={{ fontSize: "15px", marginBottom: "4px" }}>
+                        <p
+                            style={{
+                                fontSize: "15px",
+                                color: "#f0f0f0",
+                                marginBottom: "4px",
+                            }}
+                        >
                             Indonesian Adventist University
                         </p>
                         <p
                             style={{
                                 fontFamily: "Courier New, monospace",
                                 fontSize: "11px",
-                                color: "#888",
+                                color: "#666",
                             }}
                         >
                             Bandung · 2021 – 2025
@@ -179,7 +221,7 @@ export default function Experience() {
                         <p
                             style={{
                                 fontSize: "14px",
-                                color: "#3a3a3a",
+                                color: "#4ade80",
                                 fontStyle: "italic",
                                 marginBottom: "4px",
                             }}
@@ -190,6 +232,7 @@ export default function Experience() {
                             style={{
                                 fontFamily: "Courier New, monospace",
                                 fontSize: "13px",
+                                color: "#f0f0f0",
                             }}
                         >
                             GPA 3.72 / 4.00

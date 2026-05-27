@@ -70,13 +70,24 @@ export default function AIChat() {
                     width: "52px",
                     height: "52px",
                     borderRadius: "50%",
-                    background: "#0f0f0f",
-                    color: "#fff",
+                    background: "#4ade80",
+                    color: "#0a0a0a",
                     border: "none",
                     cursor: "pointer",
                     fontSize: "20px",
-                    boxShadow: "0 4px 20px rgba(0,0,0,0.15)",
+                    boxShadow: "0 4px 24px rgba(74,222,128,0.3)",
                     zIndex: 100,
+                    transition: "transform 0.2s, box-shadow 0.2s",
+                }}
+                onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = "scale(1.08)";
+                    e.currentTarget.style.boxShadow =
+                        "0 4px 32px rgba(74,222,128,0.5)";
+                }}
+                onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "scale(1)";
+                    e.currentTarget.style.boxShadow =
+                        "0 4px 24px rgba(74,222,128,0.3)";
                 }}
             >
                 {open ? "✕" : "✦"}
@@ -90,11 +101,11 @@ export default function AIChat() {
                         right: "2rem",
                         width: "360px",
                         maxHeight: "520px",
-                        background: "#fff",
-                        border: "1px solid #e8e8e8",
+                        background: "#0f0f0f",
+                        border: "1px solid #222",
                         display: "flex",
                         flexDirection: "column",
-                        boxShadow: "0 8px 40px rgba(0,0,0,0.12)",
+                        boxShadow: "0 8px 40px rgba(0,0,0,0.6)",
                         zIndex: 100,
                         overflow: "hidden",
                     }}
@@ -102,10 +113,11 @@ export default function AIChat() {
                     <div
                         style={{
                             padding: "1rem 1.25rem",
-                            borderBottom: "1px solid #e8e8e8",
+                            borderBottom: "1px solid #1a1a1a",
                             display: "flex",
                             alignItems: "center",
                             gap: "10px",
+                            background: "#111",
                         }}
                     >
                         <div
@@ -113,21 +125,22 @@ export default function AIChat() {
                                 width: "8px",
                                 height: "8px",
                                 borderRadius: "50%",
-                                background: "#0f0f0f",
+                                background: "#4ade80",
+                                boxShadow: "0 0 8px rgba(74,222,128,0.6)",
                             }}
                         />
                         <div>
-                            <p style={{ fontSize: "13px" }}>
+                            <p style={{ fontSize: "13px", color: "#f0f0f0" }}>
                                 Ask about Nicholas
                             </p>
                             <p
                                 style={{
                                     fontFamily: "Courier New, monospace",
                                     fontSize: "10px",
-                                    color: "#bbb",
+                                    color: "#4ade80",
                                 }}
                             >
-                                AI Assistant
+                                AI Assistant · Online
                             </p>
                         </div>
                     </div>
@@ -160,12 +173,12 @@ export default function AIChat() {
                                         padding: "10px 14px",
                                         background:
                                             m.role === "user"
-                                                ? "#0f0f0f"
-                                                : "#f7f7f5",
+                                                ? "#4ade80"
+                                                : "#1a1a1a",
                                         color:
                                             m.role === "user"
-                                                ? "#fff"
-                                                : "#0f0f0f",
+                                                ? "#0a0a0a"
+                                                : "#ccc",
                                         fontSize: "13px",
                                         lineHeight: 1.6,
                                     }}
@@ -178,13 +191,14 @@ export default function AIChat() {
                             <div
                                 style={{
                                     padding: "10px 14px",
-                                    background: "#f7f7f5",
+                                    background: "#1a1a1a",
                                     fontSize: "13px",
-                                    color: "#888",
+                                    color: "#4ade80",
                                     fontFamily: "Courier New, monospace",
                                     alignSelf: "flex-start",
                                 }}
                             >
+                                <span className="cursor-blink">▋</span>{" "}
                                 thinking...
                             </div>
                         )}
@@ -203,12 +217,25 @@ export default function AIChat() {
                                         style={{
                                             textAlign: "left",
                                             padding: "8px 12px",
-                                            border: "1px solid #e8e8e8",
+                                            border: "1px solid #222",
                                             background: "transparent",
                                             fontSize: "12px",
-                                            color: "#888",
+                                            color: "#666",
                                             cursor: "pointer",
                                             fontFamily: "inherit",
+                                            transition: "all 0.2s",
+                                        }}
+                                        onMouseEnter={(e) => {
+                                            e.currentTarget.style.borderColor =
+                                                "#4ade80";
+                                            e.currentTarget.style.color =
+                                                "#4ade80";
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            e.currentTarget.style.borderColor =
+                                                "#222";
+                                            e.currentTarget.style.color =
+                                                "#666";
                                         }}
                                     >
                                         {s}
@@ -222,9 +249,10 @@ export default function AIChat() {
                     <div
                         style={{
                             padding: "1rem 1.25rem",
-                            borderTop: "1px solid #e8e8e8",
+                            borderTop: "1px solid #1a1a1a",
                             display: "flex",
                             gap: "8px",
+                            background: "#111",
                         }}
                     >
                         <input
@@ -234,12 +262,21 @@ export default function AIChat() {
                             placeholder="Ask something..."
                             style={{
                                 flex: 1,
-                                border: "1px solid #e8e8e8",
+                                border: "1px solid #222",
                                 padding: "8px 12px",
                                 fontSize: "13px",
                                 outline: "none",
                                 fontFamily: "Georgia, serif",
+                                color: "#f0f0f0",
+                                background: "#0f0f0f",
+                                transition: "border-color 0.2s",
                             }}
+                            onFocus={(e) =>
+                                (e.target.style.borderColor = "#4ade80")
+                            }
+                            onBlur={(e) =>
+                                (e.target.style.borderColor = "#222")
+                            }
                         />
                         <button
                             onClick={() => send()}
@@ -248,12 +285,13 @@ export default function AIChat() {
                                 width: "36px",
                                 height: "36px",
                                 background: input.trim()
-                                    ? "#0f0f0f"
-                                    : "#e8e8e8",
-                                color: input.trim() ? "#fff" : "#bbb",
+                                    ? "#4ade80"
+                                    : "#1a1a1a",
+                                color: input.trim() ? "#0a0a0a" : "#444",
                                 border: "none",
-                                cursor: "pointer",
+                                cursor: input.trim() ? "pointer" : "default",
                                 fontSize: "14px",
+                                transition: "all 0.2s",
                             }}
                         >
                             →

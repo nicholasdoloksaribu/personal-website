@@ -1,3 +1,5 @@
+"use client";
+
 const projects = [
     {
         num: "01",
@@ -43,7 +45,7 @@ export default function Projects() {
             id="projects"
             style={{
                 padding: "5rem 2.5rem",
-                borderBottom: "1px solid #e8e8e8",
+                borderBottom: "1px solid #1a1a1a",
             }}
         >
             <p
@@ -52,7 +54,7 @@ export default function Projects() {
                     fontSize: "11px",
                     letterSpacing: "0.15em",
                     textTransform: "uppercase",
-                    color: "#888",
+                    color: "#4ade80",
                     marginBottom: "3rem",
                     display: "flex",
                     alignItems: "center",
@@ -64,7 +66,7 @@ export default function Projects() {
                         display: "inline-block",
                         width: "16px",
                         height: "1px",
-                        background: "#888",
+                        background: "#4ade80",
                     }}
                 />
                 Selected Projects
@@ -77,11 +79,21 @@ export default function Projects() {
                         justifyContent: "space-between",
                         alignItems: "flex-start",
                         gap: "2rem",
-                        padding: "1.75rem 0",
-                        borderBottom:
-                            i < projects.length - 1
-                                ? "1px solid #e8e8e8"
-                                : "none",
+                        padding: "1.75rem",
+                        marginBottom: "1px",
+                        background: "#0f0f0f",
+                        transition: "background 0.2s, border-left 0.2s",
+                        borderLeft: "2px solid transparent",
+                        cursor: "default",
+                    }}
+                    onMouseEnter={(e) => {
+                        e.currentTarget.style.background = "#141414";
+                        e.currentTarget.style.borderLeft = "2px solid #4ade80";
+                    }}
+                    onMouseLeave={(e) => {
+                        e.currentTarget.style.background = "#0f0f0f";
+                        e.currentTarget.style.borderLeft =
+                            "2px solid transparent";
                     }}
                 >
                     <div style={{ flex: 1 }}>
@@ -89,19 +101,25 @@ export default function Projects() {
                             style={{
                                 fontFamily: "Courier New, monospace",
                                 fontSize: "11px",
-                                color: "#bbb",
+                                color: "#4ade80",
                                 marginBottom: "6px",
                             }}
                         >
                             {p.num}
                         </p>
-                        <p style={{ fontSize: "17px", marginBottom: "6px" }}>
+                        <p
+                            style={{
+                                fontSize: "17px",
+                                color: "#f0f0f0",
+                                marginBottom: "6px",
+                            }}
+                        >
                             {p.name}
                         </p>
                         <p
                             style={{
                                 fontSize: "14px",
-                                color: "#888",
+                                color: "#666",
                                 lineHeight: 1.6,
                             }}
                         >
@@ -126,9 +144,10 @@ export default function Projects() {
                                     fontSize: "10px",
                                     letterSpacing: "0.06em",
                                     textTransform: "uppercase",
-                                    color: "#888",
-                                    border: "1px solid #e8e8e8",
+                                    color: "#4ade80",
+                                    border: "1px solid #1f3d2a",
                                     padding: "3px 8px",
+                                    background: "#0d1f15",
                                 }}
                             >
                                 {t}

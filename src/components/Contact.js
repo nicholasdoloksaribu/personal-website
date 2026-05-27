@@ -1,35 +1,61 @@
 "use client";
 
-const contacts = [
+const projects = [
     {
-        label: "Email",
-        handle: "nicholasdoloksaribu450@gmail.com",
-        href: "mailto:nicholasdoloksaribu450@gmail.com",
+        num: "01",
+        name: "Solvin Ticketing System",
+        desc: "Web-based ticketing system for managing support requests and issue tracking.",
+        tags: ["Laravel", "MySQL", "RESTful API"],
     },
     {
-        label: "GitHub",
-        handle: "@nicholasdoloksaribu",
-        href: "https://github.com/nicholasdoloksaribu",
+        num: "02",
+        name: "JDS Web",
+        desc: "Company website built during internship at Jelajah Data Semesta.",
+        tags: ["Laravel", "Next.js", "Redis", "Docker"],
     },
     {
-        label: "LinkedIn",
-        handle: "nicholas-juniartodoloksaribu",
-        href: "https://www.linkedin.com/in/nicholas-juniartodoloksaribu-54a341296/",
+        num: "03",
+        name: "Sentiment Analysis — E-Commerce",
+        desc: "NLP model to analyze Indonesian user reviews from e-commerce platforms.",
+        tags: ["Python", "Machine Learning"],
     },
-    { label: "Phone", handle: "+62 899 352 8931", href: "tel:+628993528931" },
+    {
+        num: "04",
+        name: "Motorcycle Data Analytics Dashboard",
+        desc: "Interactive dashboard for visualizing and analyzing motorcycle sales data.",
+        tags: ["Python", "Data Analysis"],
+    },
+    {
+        num: "05",
+        name: "Online Loans Management App",
+        desc: "Full-stack application for managing loan applications and approvals.",
+        tags: ["Laravel", "MySQL"],
+    },
+    {
+        num: "06",
+        name: "Library Information System",
+        desc: "Digital library management with book cataloging and member management.",
+        tags: ["Laravel", "PostgreSQL"],
+    },
 ];
 
-export default function Contact() {
+export default function Projects() {
     return (
-        <section id="contact" style={{ padding: "5rem 2.5rem 6rem" }}>
+        <section
+            id="projects"
+            style={{
+                padding: "5rem 2.5rem",
+                borderBottom: "1px solid #1a1a1a",
+            }}
+        >
             <p
                 style={{
                     fontFamily: "Courier New, monospace",
                     fontSize: "11px",
                     letterSpacing: "0.15em",
                     textTransform: "uppercase",
-                    color: "#888",
-                    marginBottom: "2.5rem",
+                    color: "#4ade80",
+                    marginBottom: "3rem",
                     display: "flex",
                     alignItems: "center",
                     gap: "8px",
@@ -40,68 +66,96 @@ export default function Contact() {
                         display: "inline-block",
                         width: "16px",
                         height: "1px",
-                        background: "#888",
+                        background: "#4ade80",
                     }}
                 />
-                Contact
+                Selected Projects
             </p>
-            <h2
-                style={{
-                    fontSize: "clamp(2rem, 4vw, 3rem)",
-                    fontWeight: "normal",
-                    fontStyle: "italic",
-                    marginBottom: "1rem",
-                }}
-            >
-                Lets work together.
-            </h2>
-            <p
-                style={{
-                    fontFamily: "Courier New, monospace",
-                    fontSize: "14px",
-                    color: "#888",
-                    marginBottom: "3rem",
-                    maxWidth: "420px",
-                    lineHeight: 1.6,
-                }}
-            >
-                Open to new opportunities, freelance projects, and interesting
-                collaborations.
-            </p>
-            {contacts.map((c, i) => (
-                <a
+            {projects.map((p, i) => (
+                <div
                     key={i}
-                    href={c.href}
-                    target={c.href.startsWith("http") ? "_blank" : undefined}
-                    rel="noopener noreferrer"
                     style={{
                         display: "flex",
                         justifyContent: "space-between",
-                        alignItems: "center",
-                        padding: "1.25rem 0",
-                        borderTop: "1px solid #e8e8e8",
-                        textDecoration: "none",
-                        color: "#0f0f0f",
-                        transition: "opacity 0.2s",
+                        alignItems: "flex-start",
+                        gap: "2rem",
+                        padding: "1.75rem",
+                        marginBottom: "1px",
+                        background: "#0f0f0f",
+                        transition: "background 0.2s, border-left 0.2s",
+                        borderLeft: "2px solid transparent",
+                        cursor: "default",
                     }}
-                    onMouseEnter={(e) =>
-                        (e.currentTarget.style.opacity = "0.4")
-                    }
-                    onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+                    onMouseEnter={(e) => {
+                        e.currentTarget.style.background = "#141414";
+                        e.currentTarget.style.borderLeft = "2px solid #4ade80";
+                    }}
+                    onMouseLeave={(e) => {
+                        e.currentTarget.style.background = "#0f0f0f";
+                        e.currentTarget.style.borderLeft =
+                            "2px solid transparent";
+                    }}
                 >
-                    <span style={{ fontSize: "16px" }}>{c.label}</span>
-                    <span
+                    <div style={{ flex: 1 }}>
+                        <p
+                            style={{
+                                fontFamily: "Courier New, monospace",
+                                fontSize: "11px",
+                                color: "#4ade80",
+                                marginBottom: "6px",
+                            }}
+                        >
+                            {p.num}
+                        </p>
+                        <p
+                            style={{
+                                fontSize: "17px",
+                                color: "#f0f0f0",
+                                marginBottom: "6px",
+                            }}
+                        >
+                            {p.name}
+                        </p>
+                        <p
+                            style={{
+                                fontSize: "14px",
+                                color: "#666",
+                                lineHeight: 1.6,
+                            }}
+                        >
+                            {p.desc}
+                        </p>
+                    </div>
+                    <div
                         style={{
-                            fontFamily: "Courier New, monospace",
-                            fontSize: "13px",
-                            color: "#888",
+                            display: "flex",
+                            gap: "6px",
+                            flexWrap: "wrap",
+                            justifyContent: "flex-end",
+                            paddingTop: "28px",
+                            maxWidth: "220px",
                         }}
                     >
-                        {c.handle} →
-                    </span>
-                </a>
+                        {p.tags.map((t) => (
+                            <span
+                                key={t}
+                                style={{
+                                    fontFamily: "Courier New, monospace",
+                                    fontSize: "10px",
+                                    letterSpacing: "0.06em",
+                                    textTransform: "uppercase",
+                                    color: "#4ade80",
+                                    border: "1px solid #1f3d2a",
+                                    padding: "3px 8px",
+                                    background: "#0d1f15",
+                                }}
+                            >
+                                {t}
+                            </span>
+                        ))}
+                    </div>
+                </div>
             ))}
-            <div style={{ borderTop: "1px solid #e8e8e8" }} />
         </section>
     );
 }

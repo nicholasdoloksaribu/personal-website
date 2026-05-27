@@ -19,17 +19,15 @@ export default function Navbar() {
                 right: 0,
                 zIndex: 50,
                 borderBottom: scrolled
-                    ? "1px solid #e8e8e8"
+                    ? "1px solid #222"
                     : "1px solid transparent",
-                background: scrolled ? "rgba(255,255,255,0.95)" : "transparent",
-                backdropFilter: scrolled ? "blur(10px)" : "none",
+                background: scrolled ? "rgba(10,10,10,0.92)" : "transparent",
+                backdropFilter: scrolled ? "blur(12px)" : "none",
                 transition: "all 0.3s ease",
                 padding: "1.25rem 2.5rem",
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
-                maxWidth: "1100px",
-                margin: "0 auto",
             }}
         >
             <a
@@ -37,11 +35,12 @@ export default function Navbar() {
                 style={{
                     fontFamily: "Courier New, monospace",
                     fontSize: "14px",
-                    color: "#0f0f0f",
+                    color: "#e8e8e8",
                     textDecoration: "none",
+                    letterSpacing: "0.05em",
                 }}
             >
-                nicholas.dev
+                <span style={{ color: "#4ade80" }}>~/</span>nicholas.dev
             </a>
             <ul style={{ display: "flex", gap: "2rem", listStyle: "none" }}>
                 {[
@@ -58,14 +57,15 @@ export default function Navbar() {
                                 fontSize: "12px",
                                 letterSpacing: "0.1em",
                                 textTransform: "uppercase",
-                                color: "#888",
+                                color: "#666",
                                 textDecoration: "none",
+                                transition: "color 0.2s",
                             }}
                             onMouseEnter={(e) =>
-                                (e.target.style.color = "#0f0f0f")
+                                (e.target.style.color = "#4ade80")
                             }
                             onMouseLeave={(e) =>
-                                (e.target.style.color = "#888")
+                                (e.target.style.color = "#666")
                             }
                         >
                             {label}

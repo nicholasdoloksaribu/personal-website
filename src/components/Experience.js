@@ -48,13 +48,13 @@ function ExpItem({ exp, index }) {
         >
             {/* Left */}
             <div>
-                <p className="text-xl md:text-2xl text-white font-semibold mb-2 group-hover:text-green-300 transition-colors duration-300">
+                <p className="text-xl md:text-2xl text-white font-semibold mb-2 group-hover:text-cyan-300 transition-colors duration-300">
                     {exp.company}
                 </p>
                 <p className="font-mono text-sm text-slate-500 mb-3">
                     {exp.location}
                 </p>
-                <span className="font-mono text-xs text-green-400 bg-green-400/10 border border-green-400/20 px-3 py-1 rounded-full">
+                <span className="font-mono text-xs text-cyan-300 bg-green-400/10 border border-green-400/20 px-3 py-1 rounded-full">
                     {exp.period}
                 </span>
             </div>
@@ -62,8 +62,8 @@ function ExpItem({ exp, index }) {
             {/* Right */}
             <div>
                 <div className="flex items-center gap-3 mb-6">
-                    <span className="w-2 h-2 rounded-full bg-green-400 shadow-sm shadow-green-400/60" />
-                    <p className="text-lg text-green-300 font-medium">
+                    <span className="w-2 h-2 rounded-full bg-cyan-400 shadow-sm shadow-green-400/60" />
+                    <p className="text-lg text-cyan-300 font-medium">
                         {exp.role}
                     </p>
                 </div>
@@ -74,7 +74,7 @@ function ExpItem({ exp, index }) {
                             className="flex gap-4 leading-relaxed group/item"
                             style={{ animationDelay: `${j * 0.05}s` }}
                         >
-                            <span className="text-green-500 shrink-0 mt-1 text-xs">
+                            <span className="text-cyan-500 shrink-0 mt-1 text-xs">
                                 ▸
                             </span>
                             <span className="text-base text-slate-300 group-hover/item:text-white transition-colors duration-200">
@@ -99,12 +99,12 @@ export default function Experience() {
         >
             {/* Title */}
             <div ref={titleRef} className="scroll-reveal mb-4">
-                <p className="font-mono text-sm tracking-widest uppercase text-green-400 mb-4 flex items-center gap-3">
+                <p className="font-mono text-sm tracking-widest uppercase text-cyan-400 mb-4 flex items-center gap-3">
                     <span className="inline-block w-6 h-px bg-gradient-to-r from-green-400 to-cyan-400" />
                     Experience
                 </p>
                 <h2 className="text-4xl md:text-5xl text-white font-normal">
-                    Work <span className="text-green-400">History</span>
+                    Work <span className="text-cyan-400">History</span>
                 </h2>
             </div>
 
@@ -121,7 +121,7 @@ export default function Experience() {
                 ref={eduRef}
                 className="scroll-reveal mt-16 pt-12 border-t border-slate-800/50"
             >
-                <p className="font-mono text-sm tracking-widest uppercase text-green-400 mb-8 flex items-center gap-3">
+                <p className="font-mono text-sm tracking-widest uppercase text-cyan-400 mb-8 flex items-center gap-3">
                     <span className="inline-block w-6 h-px bg-gradient-to-r from-green-400 to-cyan-400" />
                     Education
                 </p>
@@ -135,7 +135,7 @@ export default function Experience() {
                         </p>
                     </div>
                     <div>
-                        <p className="text-lg text-green-300 italic mb-4">
+                        <p className="text-lg text-cyan-300 italic mb-4">
                             Bachelor of Information System
                         </p>
                         <div className="flex items-baseline gap-2">
@@ -146,7 +146,7 @@ export default function Experience() {
                                 / 4.00
                             </p>
                         </div>
-                        <p className="font-mono text-xs text-green-400 mt-2 tracking-wider uppercase">
+                        <p className="font-mono text-xs text-cyan-400 mt-2 tracking-wider uppercase">
                             Cumulative GPA
                         </p>
                     </div>

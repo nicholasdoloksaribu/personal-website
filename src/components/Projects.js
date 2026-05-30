@@ -50,14 +50,14 @@ function ProjectCard({ p, index }) {
         >
             <div className="flex-1">
                 <div className="flex items-start gap-4 mb-3">
-                    <span className="font-mono text-xs  text-green-400 bg-slate-800 px-2 py-1 rounded shrink-0">
+                    <span className="font-mono text-xs  text-cyan-300 bg-slate-800 px-2 py-1 rounded shrink-0">
                         {p.num}
                     </span>
-                    <p className="text-xl md:text-2xl text-white font-medium group-hover:text-cyan-300 transition-colors">
+                    <p className="text-xl md:text-2xl text-cyan-300 font-medium group-hover:text-cyan-300 transition-colors">
                         {p.name}
                     </p>
                 </div>
-                <p className="text-base md:text-lg  text-green-400 leading-relaxed group-hover:text-cyan-300 transition-colors">
+                <p className="text-base md:text-lg  text-cyan-300 leading-relaxed group-hover:text-cyan-300 transition-colors">
                     {p.desc}
                 </p>
             </div>

@@ -25,47 +25,72 @@ export default function Contact() {
     const listRef = useScrollReveal();
 
     return (
-        <section id="contact" className="px-6 md:px-12 py-24">
-            <div ref={titleRef} className="scroll-reveal mb-12">
-                <p className="font-mono text-sm tracking-widest uppercase text-indigo-400 mb-4 flex items-center gap-3">
-                    <span className="inline-block w-6 h-px bg-gradient-to-r from-indigo-500 to-cyan-400" />
-                    Contact
-                </p>
-                <h2 className="text-4xl md:text-6xl text-white font-normal italic leading-tight mb-4">
-                    Let's build something
-                    <br />
-                    <span className="gradient-text">great together.</span>
-                </h2>
-                <p className="font-mono text-base text-slate-500 max-w-md leading-relaxed">
-                    Open to full-time roles, freelance projects, and interesting
-                    collaborations.
-                </p>
-            </div>
+        <section id="contact" className="px-6 md:px-12 py-20 md:py-24">
+            <div className="max-w-4xl mx-auto">
+                {/* Title */}
+                <div ref={titleRef} className="scroll-reveal mb-10 md:mb-14">
+                    <p className="font-mono text-xs md:text-sm tracking-widest uppercase text-cyan-400 mb-4 flex items-center gap-3">
+                        <span className="inline-block w-6 h-px bg-gradient-to-r from-green-400 to-cyan-400" />
+                        Contact
+                    </p>
+                    <h2 className="text-3xl sm:text-4xl md:text-6xl text-white font-normal italic leading-tight mb-4">
+                        Let's build something
+                        <br />
+                        <span className="text-cyan-300">great together.</span>
+                    </h2>
+                    <p className="font-mono text-sm md:text-base text-slate-500 max-w-md leading-relaxed mt-4">
+                        Open to full-time roles, freelance projects, and
+                        interesting collaborations.
+                    </p>
+                </div>
 
-            <div
-                ref={listRef}
-                className="scroll-reveal flex flex-col max-w-2xl"
-            >
-                {contacts.map((c, i) => (
+                {/* Contact list */}
+                <div ref={listRef} className="scroll-reveal flex flex-col">
+                    {contacts.map((c, i) => (
+                        <a
+                            key={i}
+                            href={c.href}
+                            target={
+                                c.href.startsWith("http") ? "_blank" : undefined
+                            }
+                            rel="noopener noreferrer"
+                            className="group flex items-center justify-between py-5 md:py-6 border-t border-slate-800/60 no-underline hover:pl-3 md:hover:pl-4 transition-all duration-300"
+                            style={{ transitionDelay: `${i * 0.05}s` }}
+                        >
+                            <span className="text-base md:text-xl text-white group-hover:text-cyan-300 transition-colors duration-300 font-medium">
+                                {c.label}
+                            </span>
+                            <div className="flex items-center gap-2 md:gap-3">
+                                <span className="font-mono text-xs md:text-sm text-slate-500 group-hover:text-cyan-300 transition-colors duration-300 truncate max-w-[140px] sm:max-w-xs md:max-w-none">
+                                    {c.handle}
+                                </span>
+                                <span className="text-slate-700 group-hover:text-cyan-300 transition-all duration-300 group-hover:translate-x-1 inline-block">
+                                    →
+                                </span>
+                            </div>
+                        </a>
+                    ))}
+                    <div className="border-t border-slate-800/60" />
+                </div>
+
+                {/* CTA */}
+                <div className="mt-12 md:mt-16 flex flex-col sm:flex-row gap-4">
                     <a
-                        key={i}
-                        href={c.href}
-                        target={
-                            c.href.startsWith("http") ? "_blank" : undefined
-                        }
-                        rel="noopener noreferrer"
-                        className="group flex justify-between items-center py-6 border-t border-slate-800/50 no-underline hover:pl-4 transition-all duration-300"
-                        style={{ transitionDelay: `${i * 0.05}s` }}
+                        href="mailto:nicholasdoloksaribu450@gmail.com"
+                        className="font-mono text-sm tracking-widest uppercase text-slate-950 bg-cyan-400 px-6 md:px-8 py-3 md:py-4 no-underline  transition-colors text-center font-bold"
                     >
-                        <span className="text-xl text-white group-hover:text-cyan-300 transition-colors">
-                            {c.label}
-                        </span>
-                        <span className="font-mono text-sm text-slate-500 group-hover:text-cyan-400 transition-colors">
-                            {c.handle} →
-                        </span>
+                        Send me an email →
                     </a>
-                ))}
-                <div className="border-t border-slate-800/50" />
+
+                    <a
+                        href="https://github.com/nicholasdoloksaribu"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-mono text-sm tracking-widest uppercase text-cyan-400 border border-cyan-300 px-6 md:px-8 py-3 md:py-4 no-underline hover:text-black hover:border-cyan-400 hover:bg-cyan-400 transition-all text-center"
+                    >
+                        View GitHub
+                    </a>
+                </div>
             </div>
         </section>
     );

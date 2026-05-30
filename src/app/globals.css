@@ -1,39 +1,30 @@
 @import "tailwindcss";
 
-@theme {
-    --font-serif: Georgia, "Times New Roman", serif;
-    --font-mono: "Courier New", monospace;
-
-    --color-dark: #0a0a0a;
-    --color-dark-card: #0f0f0f;
-    --color-dark-hover: #141414;
-    --color-dark-border: #1a1a1a;
-    --color-dark-input: #111111;
-    --color-accent: #4ade80;
-    --color-accent-border: #1f3d2a;
-    --color-accent-bg: #0d1f15;
-    --color-text: #e8e8e8;
-    --color-text-bright: #f0f0f0;
-    --color-text-muted: #888888;
-    --color-text-dim: #666666;
-    --color-text-dimmer: #444444;
-    --color-line: #222222;
-
-    --animate-fade-up: fadeUp 0.7s ease forwards;
-    --animate-blink: blink 1s step-end infinite;
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: Georgia, "Times New Roman", serif;
 }
 
 @keyframes fadeUp {
     from {
         opacity: 0;
-        transform: translateY(24px);
+        transform: translateY(32px);
     }
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
-
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
 @keyframes blink {
     0%,
     100% {
@@ -43,75 +34,132 @@
         opacity: 0;
     }
 }
-
-html {
-    scroll-behavior: smooth;
+@keyframes gradientShift {
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+@keyframes glow {
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(6, 182, 212, 0.5);
+    }
+}
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+@keyframes scanline {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(100vh);
+    }
 }
 
-body {
-    font-family: var(--font-serif);
-    background: var(--color-dark);
-    color: var(--color-text);
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
+.fade-up {
+    animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    opacity: 0;
+}
+.delay-1 {
+    animation-delay: 0.1s;
+}
+.delay-2 {
+    animation-delay: 0.25s;
+}
+.delay-3 {
+    animation-delay: 0.4s;
+}
+.delay-4 {
+    animation-delay: 0.6s;
+}
+.delay-5 {
+    animation-delay: 0.8s;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-    width: 6px;
+.cursor-blink {
+    animation: blink 1s step-end infinite;
 }
-::-webkit-scrollbar-track {
-    background: #111;
+
+.gradient-text {
+    background: linear-gradient(135deg, #818cf8, #06b6d4, #34d399);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 4s ease infinite;
 }
-::-webkit-scrollbar-thumb {
-    background: #333;
-    border-radius: 3px;
+
+.gradient-border {
+    position: relative;
+}
+.gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, #818cf8, #06b6d4);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+.grid-bg {
+    background-image:
+        linear-gradient(rgba(99, 102, 241, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+        opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .chat-scroll::-webkit-scrollbar {
     width: 4px;
 }
 .chat-scroll::-webkit-scrollbar-thumb {
-    background: #333;
+    background: #334155;
     border-radius: 2px;
 }
 
-/* Fade-up animation classes with delays */
-.fade-up {
-    animation: fadeUp 0.7s ease forwards;
-    opacity: 0;
-}
-.fade-up-1 {
-    animation-delay: 0.1s;
-}
-.fade-up-2 {
-    animation-delay: 0.25s;
-}
-.fade-up-3 {
-    animation-delay: 0.4s;
-}
-.fade-up-4 {
-    animation-delay: 0.55s;
-}
-.fade-up-5 {
-    animation-delay: 0.7s;
-}
-
-/* Grid background */
-.grid-bg {
-    background-image: linear-gradient(
-            rgba(255, 255, 255, 0.03) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0.03) 1px,
-            transparent 1px
-        );
-    background-size: 40px 40px;
-}
-
-/* Glow text */
-.glow-text {
-    text-shadow: 0 0 40px rgba(100, 200, 100, 0.15);
+.glow-btn {
+    animation: glow 3s ease-in-out infinite;
 }

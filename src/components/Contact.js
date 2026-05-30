@@ -1,66 +1,71 @@
 "use client";
+import useScrollReveal from "../hooks/useScrollReveal";
 
 const contacts = [
     {
         label: "Email",
-        value: "nicholasdoloksaribu450@gmail.com",
+        handle: "nicholasdoloksaribu450@gmail.com",
         href: "mailto:nicholasdoloksaribu450@gmail.com",
     },
     {
-        label: "LinkedIn",
-        value: "Nicholas Doloksaribu",
-        href: "https://linkedin.com/in/nicholas-doloksaribu",
-    },
-    {
         label: "GitHub",
-        value: "nicholasdoloksaribu",
+        handle: "@nicholasdoloksaribu",
         href: "https://github.com/nicholasdoloksaribu",
     },
+    {
+        label: "LinkedIn",
+        handle: "nicholas-juniartodoloksaribu",
+        href: "https://www.linkedin.com/in/nicholas-juniartodoloksaribu-54a341296/",
+    },
+    { label: "Phone", handle: "+62 899 352 8931", href: "tel:+628993528931" },
 ];
 
 export default function Contact() {
+    const titleRef = useScrollReveal();
+    const listRef = useScrollReveal();
+
     return (
-        <section
-            id="contact"
-            className="px-5 md:px-10 py-16 md:py-20 border-b border-dark-border"
-        >
-            <p className="font-mono text-[11px] tracking-[0.15em] uppercase text-accent mb-10 md:mb-12 flex items-center gap-2">
-                <span className="inline-block w-4 h-px bg-accent" />
-                Contact
-            </p>
+        <section id="contact" className="px-6 md:px-12 py-24">
+            <div ref={titleRef} className="scroll-reveal mb-12">
+                <p className="font-mono text-sm tracking-widest uppercase text-indigo-400 mb-4 flex items-center gap-3">
+                    <span className="inline-block w-6 h-px bg-gradient-to-r from-indigo-500 to-cyan-400" />
+                    Contact
+                </p>
+                <h2 className="text-4xl md:text-6xl text-white font-normal italic leading-tight mb-4">
+                    Let's build something
+                    <br />
+                    <span className="gradient-text">great together.</span>
+                </h2>
+                <p className="font-mono text-base text-slate-500 max-w-md leading-relaxed">
+                    Open to full-time roles, freelance projects, and interesting
+                    collaborations.
+                </p>
+            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
-                <div>
-                    <h2 className="text-3xl md:text-4xl text-text-bright font-normal mb-6 leading-tight">
-                        Let&apos;s work
-                        <br />
-                        <em className="text-text-dimmer italic">together.</em>
-                    </h2>
-                    <p className="text-base text-text-muted leading-[1.75] max-w-md">
-                        I&apos;m currently open to new opportunities. Whether
-                        you have a project in mind or just want to connect, feel
-                        free to reach out.
-                    </p>
-                </div>
-
-                <div className="flex flex-col gap-4">
-                    {contacts.map((c) => (
-                        <a
-                            key={c.label}
-                            href={c.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group block p-5 bg-dark-card border border-dark-border no-underline transition-all duration-200 hover:bg-dark-hover hover:border-accent"
-                        >
-                            <p className="font-mono text-[10px] tracking-[0.12em] uppercase text-accent mb-2">
-                                {c.label}
-                            </p>
-                            <p className="text-[15px] text-text-muted transition-colors duration-200 group-hover:text-text-bright">
-                                {c.value}
-                            </p>
-                        </a>
-                    ))}
-                </div>
+            <div
+                ref={listRef}
+                className="scroll-reveal flex flex-col max-w-2xl"
+            >
+                {contacts.map((c, i) => (
+                    <a
+                        key={i}
+                        href={c.href}
+                        target={
+                            c.href.startsWith("http") ? "_blank" : undefined
+                        }
+                        rel="noopener noreferrer"
+                        className="group flex justify-between items-center py-6 border-t border-slate-800/50 no-underline hover:pl-4 transition-all duration-300"
+                        style={{ transitionDelay: `${i * 0.05}s` }}
+                    >
+                        <span className="text-xl text-white group-hover:text-cyan-300 transition-colors">
+                            {c.label}
+                        </span>
+                        <span className="font-mono text-sm text-slate-500 group-hover:text-cyan-400 transition-colors">
+                            {c.handle} →
+                        </span>
+                    </a>
+                ))}
+                <div className="border-t border-slate-800/50" />
             </div>
         </section>
     );

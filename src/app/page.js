@@ -8,19 +8,19 @@ import AIChat from "../components/AIChat";
 
 export default function Home() {
     return (
-        <main>
+        <main className="bg-slate-950 min-h-screen">
             <Navbar />
             <Hero />
             <Experience />
             <Skills />
             <Projects />
             <Contact />
-            <footer className="px-5 md:px-10 py-6 border-t border-dark-border flex flex-col sm:flex-row justify-between gap-2">
-                <span className="font-mono text-[11px] text-text-dimmer">
+            <footer className="px-6 md:px-12 py-6 border-t border-slate-800/50 flex justify-between items-center">
+                <span className="font-mono text-sm text-slate-700">
                     © 2026 Nicholas Juniarto Doloksaribu
                 </span>
-                <span className="font-mono text-[11px] text-text-dimmer">
-                    Built with Next.js
+                <span className="font-mono text-sm text-slate-700">
+                    Built with <span className="text-indigo-500">Next.js</span>
                 </span>
             </footer>
             <AIChat />

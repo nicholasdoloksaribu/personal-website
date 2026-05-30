@@ -1,82 +1,101 @@
 "use client";
+import useScrollReveal from "../hooks/useScrollReveal";
 
 const projects = [
     {
         num: "01",
         name: "Solvin Ticketing System",
-        desc: "Web-based ticketing system for managing support requests and issue tracking.",
+        desc: "Web-based ticketing system for managing support requests and issue tracking with real-time notifications.",
         tags: ["Laravel", "MySQL", "RESTful API"],
     },
     {
         num: "02",
         name: "JDS Web",
-        desc: "Company website built during internship at Jelajah Data Semesta.",
+        desc: "Full-stack company website with backend services built during internship at Jelajah Data Semesta.",
         tags: ["Laravel", "Next.js", "Redis", "Docker"],
     },
     {
         num: "03",
         name: "Sentiment Analysis — E-Commerce",
-        desc: "NLP model to analyze Indonesian user reviews from e-commerce platforms.",
-        tags: ["Python", "Machine Learning"],
+        desc: "NLP model to analyze Indonesian user reviews from major e-commerce platforms.",
+        tags: ["Python", "Machine Learning", "NLP"],
     },
     {
         num: "04",
         name: "Motorcycle Data Analytics Dashboard",
-        desc: "Interactive dashboard for visualizing and analyzing motorcycle sales data.",
-        tags: ["Python", "Data Analysis"],
+        desc: "Interactive visualization dashboard for analyzing motorcycle sales and trend data.",
+        tags: ["Python", "Data Analysis", "Visualization"],
     },
     {
         num: "05",
         name: "Online Loans Management App",
-        desc: "Full-stack application for managing loan applications and approvals.",
-        tags: ["Laravel", "MySQL"],
+        desc: "Full-stack application for managing loan applications, approvals, and repayment tracking.",
+        tags: ["Laravel", "MySQL", "PHP"],
     },
     {
         num: "06",
         name: "Library Information System",
-        desc: "Digital library management with book cataloging and member management.",
+        desc: "Digital library management system with book cataloging, member management, and borrowing records.",
         tags: ["Laravel", "PostgreSQL"],
     },
 ];
 
+function ProjectCard({ p, index }) {
+    const ref = useScrollReveal();
+    return (
+        <div
+            ref={ref}
+            className="scroll-reveal group flex flex-col sm:flex-row gap-6 p-6 md:p-8 bg-slate-900/30 border border-slate-800/50 hover:border-indigo-500/50 hover:bg-slate-900/70 transition-all duration-500 rounded-sm"
+            style={{ transitionDelay: `${index * 0.08}s` }}
+        >
+            <div className="flex-1">
+                <div className="flex items-start gap-4 mb-3">
+                    <span className="font-mono text-xs text-slate-700 bg-slate-800 px-2 py-1 rounded shrink-0">
+                        {p.num}
+                    </span>
+                    <p className="text-xl md:text-2xl text-white font-medium group-hover:text-cyan-300 transition-colors">
+                        {p.name}
+                    </p>
+                </div>
+                <p className="text-base md:text-lg text-slate-500 leading-relaxed group-hover:text-slate-400 transition-colors">
+                    {p.desc}
+                </p>
+            </div>
+            <div className="flex flex-wrap gap-2 sm:flex-col sm:items-end sm:justify-start sm:min-w-[140px] sm:pt-1">
+                {p.tags.map((t) => (
+                    <span
+                        key={t}
+                        className="font-mono text-xs uppercase tracking-wider text-indigo-300 border border-indigo-900/70 bg-indigo-950/40 px-3 py-1 rounded-full group-hover:border-indigo-500/70 transition-colors"
+                    >
+                        {t}
+                    </span>
+                ))}
+            </div>
+        </div>
+    );
+}
+
 export default function Projects() {
+    const titleRef = useScrollReveal();
     return (
         <section
             id="projects"
-            className="px-5 md:px-10 py-16 md:py-20 border-b border-dark-border"
+            className="px-6 md:px-12 py-24 border-b border-slate-800/50"
         >
-            <p className="font-mono text-[11px] tracking-[0.15em] uppercase text-accent mb-10 md:mb-12 flex items-center gap-2">
-                <span className="inline-block w-4 h-px bg-accent" />
-                Selected Projects
-            </p>
-            {projects.map((p, i) => (
-                <div
-                    key={i}
-                    className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 md:gap-8 p-5 md:p-7 mb-px bg-dark-card transition-all duration-200 border-l-2 border-l-transparent hover:bg-dark-hover hover:border-l-accent cursor-default"
-                >
-                    <div className="flex-1">
-                        <p className="font-mono text-[11px] text-accent mb-1.5">
-                            {p.num}
-                        </p>
-                        <p className="text-[17px] text-text-bright mb-1.5">
-                            {p.name}
-                        </p>
-                        <p className="text-sm text-text-dim leading-relaxed">
-                            {p.desc}
-                        </p>
-                    </div>
-                    <div className="flex gap-1.5 flex-wrap md:justify-end md:pt-7 md:max-w-[220px]">
-                        {p.tags.map((t) => (
-                            <span
-                                key={t}
-                                className="font-mono text-[10px] tracking-[0.06em] uppercase text-accent border border-accent-border px-2 py-0.5 bg-accent-bg"
-                            >
-                                {t}
-                            </span>
-                        ))}
-                    </div>
-                </div>
-            ))}
+            <div ref={titleRef} className="scroll-reveal mb-12">
+                <p className="font-mono text-sm tracking-widest uppercase text-indigo-400 mb-4 flex items-center gap-3">
+                    <span className="inline-block w-6 h-px bg-gradient-to-r from-indigo-500 to-cyan-400" />
+                    Projects
+                </p>
+                <h2 className="text-4xl md:text-5xl text-white font-normal">
+                    Selected <span className="gradient-text">Work</span>
+                </h2>
+            </div>
+            <div className="flex flex-col gap-4">
+                {projects.map((p, i) => (
+                    <ProjectCard key={i} p={p} index={i} />
+                ))}
+            </div>
         </section>
     );
 }

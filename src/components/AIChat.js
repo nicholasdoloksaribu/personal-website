@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 
 const SUGGESTIONS = [
     "What's Nicholas's tech stack?",
-    "Tell me about his experience",
+    "Tell me about his work experience",
     "What projects has he built?",
     "How can I contact him?",
 ];
@@ -61,65 +61,80 @@ export default function AIChat() {
 
     return (
         <>
-            {/* Toggle Button */}
             <button
                 onClick={() => setOpen(!open)}
-                className="fixed bottom-6 right-5 md:bottom-8 md:right-8 w-[52px] h-[52px] rounded-full bg-accent text-dark border-none cursor-pointer text-xl shadow-[0_4px_24px_rgba(74,222,128,0.3)] z-[100] transition-all duration-200 hover:scale-[1.08] hover:shadow-[0_4px_32px_rgba(74,222,128,0.5)]"
+                className="fixed bottom-8 right-6 w-14 h-14 rounded-full border-none cursor-pointer text-xl z-50 transition-all duration-300 hover:scale-110 flex items-center justify-center text-white font-bold"
+                style={{
+                    background: "linear-gradient(135deg, #6366f1, #06b6d4)",
+                    boxShadow: "0 4px 24px rgba(99,102,241,0.4)",
+                }}
             >
                 {open ? "✕" : "✦"}
             </button>
 
-            {/* Chat Window */}
             {open && (
-                <div className="fixed bottom-20 md:bottom-[5.5rem] right-5 md:right-8 w-[calc(100vw-2.5rem)] md:w-[360px] max-h-[70vh] md:max-h-[520px] bg-dark-card border border-line flex flex-col shadow-[0_8px_40px_rgba(0,0,0,0.6)] z-[100] overflow-hidden">
-                    {/* Header */}
-                    <div className="px-4 md:px-5 py-4 border-b border-dark-border flex items-center gap-2.5 bg-dark-input">
-                        <div className="w-2 h-2 rounded-full bg-accent shadow-[0_0_8px_rgba(74,222,128,0.6)]" />
+                <div
+                    className="fixed bottom-28 right-6 w-[calc(100vw-3rem)] sm:w-96 max-h-[540px] bg-slate-950 border border-slate-800 flex flex-col shadow-2xl z-50 overflow-hidden rounded-sm"
+                    style={{
+                        boxShadow:
+                            "0 25px 60px rgba(0,0,0,0.8), 0 0 0 1px rgba(99,102,241,0.2)",
+                    }}
+                >
+                    <div className="flex items-center gap-3 px-5 py-4 border-b border-slate-800 bg-slate-900">
+                        <div
+                            className="w-2.5 h-2.5 rounded-full bg-cyan-400"
+                            style={{
+                                boxShadow: "0 0 8px rgba(34,211,238,0.8)",
+                            }}
+                        />
                         <div>
-                            <p className="text-[13px] text-text-bright">
+                            <p className="text-base text-white font-medium">
                                 Ask about Nicholas
                             </p>
-                            <p className="font-mono text-[10px] text-accent">
+                            <p className="font-mono text-xs text-indigo-400">
                                 AI Assistant · Online
                             </p>
                         </div>
                     </div>
 
-                    {/* Messages */}
-                    <div className="chat-scroll flex-1 overflow-y-auto p-4 md:p-5 flex flex-col gap-3">
+                    <div className="chat-scroll flex-1 overflow-y-auto p-5 flex flex-col gap-3">
                         {messages.map((m, i) => (
                             <div
                                 key={i}
-                                className={`flex ${
-                                    m.role === "user"
-                                        ? "justify-end"
-                                        : "justify-start"
-                                }`}
+                                className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
                             >
                                 <div
-                                    className={`max-w-[85%] px-3.5 py-2.5 text-[13px] leading-relaxed ${
+                                    className={`max-w-[85%] px-4 py-3 text-sm leading-relaxed rounded-sm ${
                                         m.role === "user"
-                                            ? "bg-accent text-dark"
-                                            : "bg-dark-border text-[#ccc]"
+                                            ? "text-white"
+                                            : "bg-slate-800/80 text-slate-200"
                                     }`}
+                                    style={
+                                        m.role === "user"
+                                            ? {
+                                                  background:
+                                                      "linear-gradient(135deg, #6366f1, #06b6d4)",
+                                              }
+                                            : {}
+                                    }
                                 >
                                     {m.content}
                                 </div>
                             </div>
                         ))}
                         {loading && (
-                            <div className="px-3.5 py-2.5 bg-dark-border text-[13px] text-accent font-mono self-start">
-                                <span className="animate-blink">▋</span>{" "}
+                            <div className="self-start px-4 py-3 bg-slate-800/80 font-mono text-sm text-indigo-400 rounded-sm">
+                                <span className="cursor-blink">▋</span>{" "}
                                 thinking...
                             </div>
                         )}
                         {messages.length === 1 && (
-                            <div className="flex flex-col gap-1.5">
+                            <div className="flex flex-col gap-2 mt-1">
                                 {SUGGESTIONS.map((s) => (
                                     <button
                                         key={s}
                                         onClick={() => send(s)}
-                                        className="text-left px-3 py-2 border border-line bg-transparent text-xs text-text-dim cursor-pointer font-[inherit] transition-all duration-200 hover:border-accent hover:text-accent"
+                                        className="text-left px-3 py-2.5 border border-slate-800 bg-transparent text-sm text-slate-500 cursor-pointer font-serif hover:border-indigo-500/60 hover:text-indigo-300 hover:bg-indigo-950/20 transition-all duration-200 rounded-sm"
                                     >
                                         {s}
                                     </button>
@@ -129,23 +144,26 @@ export default function AIChat() {
                         <div ref={bottomRef} />
                     </div>
 
-                    {/* Input */}
-                    <div className="px-4 md:px-5 py-4 border-t border-dark-border flex gap-2 bg-dark-input">
+                    <div className="flex gap-2 px-4 py-3 border-t border-slate-800 bg-slate-900">
                         <input
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
                             onKeyDown={(e) => e.key === "Enter" && send()}
                             placeholder="Ask something..."
-                            className="flex-1 border border-line px-3 py-2 text-[13px] outline-none font-serif text-text-bright bg-dark-card transition-colors duration-200 focus:border-accent"
+                            className="flex-1 bg-slate-800 border border-slate-700 focus:border-indigo-500 outline-none px-4 py-2.5 text-sm text-white placeholder-slate-600 font-serif transition-colors rounded-sm"
                         />
                         <button
                             onClick={() => send()}
                             disabled={loading || !input.trim()}
-                            className={`w-9 h-9 border-none text-sm transition-all duration-200 ${
+                            className={`w-10 h-10 border-none text-base cursor-pointer transition-all rounded-sm font-bold ${input.trim() ? "text-white hover:opacity-80" : "bg-slate-800 text-slate-600 cursor-default"}`}
+                            style={
                                 input.trim()
-                                    ? "bg-accent text-dark cursor-pointer"
-                                    : "bg-dark-border text-text-dimmer cursor-default"
-                            }`}
+                                    ? {
+                                          background:
+                                              "linear-gradient(135deg, #6366f1, #06b6d4)",
+                                      }
+                                    : {}
+                            }
                         >
                             →
                         </button>

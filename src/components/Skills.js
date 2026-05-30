@@ -4,22 +4,21 @@ import useScrollReveal from "../hooks/useScrollReveal";
 const groups = [
     {
         category: "Backend",
-        icon: "⚙️",
+
         skills: ["Laravel", "PHP", "Node.js", "Express.js", "RESTful APIs"],
     },
     {
         category: "Frontend",
-        icon: "🎨",
+
         skills: ["React.js", "Next.js", "Tailwind CSS"],
     },
     {
         category: "Database & Infra",
-        icon: "🗄️",
+
         skills: ["MySQL", "PostgreSQL", "Redis", "Docker"],
     },
     {
         category: "Languages",
-        icon: "💻",
         skills: ["Go", "Python", "JavaScript", "Java", "C++", "C#"],
     },
 ];
@@ -52,9 +51,8 @@ export default function Skills() {
                             className="scroll-reveal group bg-slate-900/50 border border-slate-800/50 hover:border-indigo-500/50 p-6 transition-all duration-500 hover:bg-slate-900 hover:-translate-y-1 rounded-sm"
                             style={{ transitionDelay: `${i * 0.1}s` }}
                         >
-                            <div className="flex items-center gap-3 mb-5">
-                                <span className="text-2xl">{g.icon}</span>
-                                <p className="font-mono text-xs tracking-widest uppercase text-indigo-400 group-hover:text-cyan-400 transition-colors">
+                            <div className="flex items-center gap-2 mb-5">
+                                <p className="font-mono text-xl tracking-widest uppercase text-indigo-400 group-hover:text-cyan-400 transition-colors">
                                     {g.category}
                                 </p>
                             </div>
